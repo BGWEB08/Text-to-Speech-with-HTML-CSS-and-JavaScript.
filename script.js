@@ -4,29 +4,34 @@ document.addEventListener("DOMContentLoaded", function() {
     let voices = [];
     let voiceSelect = document.querySelector("select");
 
+    const languageMap = {
+        "Turkish": "tr-TR",
+        "English": "en-US",
+        "German": "de-DE"
+        // Diğer dilleri buraya ekleyebilirsiniz
+    };
+
     function populateVoiceList() {
         voices = window.speechSynthesis.getVoices();
         voiceSelect.innerHTML = '';
-        voices.forEach((voice, i) => {
+        for (const language in languageMap) {
             const option = document.createElement('option');
-            option.textContent = voice.name + ' (' + voice.lang + ')';
-            option.setAttribute('data-lang', voice.lang);
-            option.setAttribute('data-name', voice.name);
+            option.textContent = language;
+            option.setAttribute('value', languageMap[language]);
             voiceSelect.appendChild(option);
-        });
+        }
     }
 
-    populateVoiceList(); // Konuşmacı seçeneklerini başlangıçta doldur
+    populateVoiceList(); // Dil seçeneklerini başlangıçta doldur
 
-    // Mobil cihazlarda konuşmacı seçeneklerinin alınması için biraz gecikme ekleyelim
+    // Mobil cihazlarda dil seçeneklerinin alınması için biraz gecikme ekleyelim
     setTimeout(() => {
         populateVoiceList();
     }, 1000);
 
     voiceSelect.addEventListener("change", () => {
         const selectedOption = voiceSelect.selectedOptions[0];
-        speech.voice = voices.find(voice => voice.name === selectedOption.getAttribute('data-name'));
-        speech.lang = selectedOption.getAttribute('data-lang');
+        speech.lang = selectedOption.value;
     });
 
     button.addEventListener("click", ()=>{
