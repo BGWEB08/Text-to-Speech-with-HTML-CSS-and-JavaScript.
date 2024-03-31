@@ -4,22 +4,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let voices = [];
     let voiceSelect = document.querySelector("select");
 
-    const languageMap = {
-        "Turkish": "tr-TR",
-        "English": "en-US",
-        "German": "de-DE"
-        // Diğer dilleri buraya ekleyebilirsiniz
-    };
-
     function populateVoiceList() {
         voices = window.speechSynthesis.getVoices();
         voiceSelect.innerHTML = '';
-        for (const language in languageMap) {
+        voices.forEach((voice, i) => {
             const option = document.createElement('option');
-            option.textContent = language;
-            option.setAttribute('value', languageMap[language]);
+            option.textContent = voice.name + ' (' + voice.lang + ')';
+            option.setAttribute('value', voice.lang);
             voiceSelect.appendChild(option);
-        }
+        });
     }
 
     populateVoiceList(); // Dil seçeneklerini başlangıçta doldur
