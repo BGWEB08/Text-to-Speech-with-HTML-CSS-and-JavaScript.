@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     voiceSelect.addEventListener("change", () => {
         speech.voice = voices[voiceSelect.value];
+        // Seçilen dili belirle
+        const selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+        speech.lang = selectedOption.lang;
     });
 
     button.addEventListener("click", ()=>{
