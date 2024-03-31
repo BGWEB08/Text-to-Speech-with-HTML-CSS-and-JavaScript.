@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.speechSynthesis.onvoiceschanged = () =>{
         voices = window.speechSynthesis.getVoices();
-        speech.voice = voices[0];
+        populateVoiceList();
+    }
 
+    function populateVoiceList() {
         voices.forEach((voice,i) => (voiceSelect.options[i] = new Option(voice.name, i)));
     }
 
