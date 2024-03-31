@@ -4,14 +4,19 @@ document.addEventListener("DOMContentLoaded", function() {
     let voices = [];
     let voiceSelect = document.querySelector("select");
 
-    window.speechSynthesis.onvoiceschanged = () =>{
+    function populateVoiceList() {
         voices = window.speechSynthesis.getVoices();
-        populateVoiceList();
+        voices.forEach((voice, i) => {
+            voiceSelect.options[i] = new Option(voice.name, i);
+        });
     }
 
-    function populateVoiceList() {
-        voices.forEach((voice,i) => (voiceSelect.options[i] = new Option(voice.name, i)));
-    }
+    populateVoiceList(); // Konuşmacı seçeneklerini başlangıçta doldur
+
+    // Mobil cihazlarda konuşmacı seçeneklerinin alınması için biraz gecikme ekleyelim
+    setTimeout(() => {
+        populateVoiceList();
+    }, 1000);
 
     voiceSelect.addEventListener("change", () => {
         speech.voice = voices[voiceSelect.value];
