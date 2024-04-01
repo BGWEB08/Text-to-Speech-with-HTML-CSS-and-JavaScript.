@@ -1,6 +1,6 @@
 # Text to Speech
 
-This project allows users to input text and hear it spoken aloud. Users can type or paste text into the input area, select the desired language, and listen to the spoken text by clicking the "Listen" button.
+This project allows users to input text and listen to it being spoken aloud. Users can type or paste text into the input area, select the desired language, and listen to the spoken text by clicking the "Listen" button.
 
 ## Features
 
