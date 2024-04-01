@@ -18,4 +18,4 @@ This project allows users to enter text and listen to it being spoken aloud. Use
 
 ## Demo
 
-![Text-to-Speech Image](demo.gif)
+![Text-to-Speech Image](https://github.com/BGWEB08/README.md-IMAGES/blob/main/JavaScript%20Trials/Text%20to%20Speech/texttospeech-img.png?raw=true)
